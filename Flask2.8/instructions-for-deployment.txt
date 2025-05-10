@@ -1,0 +1,51 @@
+This app was deployed in PythonAnywhere
+The webpage address is: https://clfirme.pythonanywhere.com/
+
+PROCEDURE FOR DEPLOYMENT OF FLASK APP IN PYTHONANYWHERE:
+1) Go to Consoles and open a new console.
+2) In the console, use mkdir to create the main directory (lped) and secondary directory (templates).
+3) In the console, create a virtual environment using:
+    i) python3 -m venv myenv
+    ii) source myenv/bin/activate
+4) In the console, in main directory, install flask, gunicorn using pip install.
+5) Go to Files, click the main directory and upload Dataset.xlsx and app.py
+6) In the secondary file, upload the index.html
+7) The app.py has two important modifications:
+    i) file_path = '/home/clfirme/lped/Dataset.xlsx' # at the beginning of the code
+    ii) app.run(debug=True, port=5002) # at the end of the code
+8) In the console, create a new file called: flask_app.wsgi 
+Note: In this case, you can use NANO editor. 
+    i) To open nano editor, type: nano flask_app.wsgi
+    ii) A new window will open. Then copy and paste this code:
+    # flask_app.wsgi
+    import sys
+    path = '/home/clfirme/lped' 
+    if path not in sys.path:
+        sys.path.append(path)
+    from app import app as application
+    iii) After writing your code, you can save the file by pressing:
+        Ctrl + O: This will prompt you to save the file. Press Enter to confirm.
+        Ctrl + X: This will exit the nano text editor.
+9) In the console, in the main directory of the app (use cd to get there), type: gunicorn app:app -b 0.0.0.0:5002
+Note: The console will be running. Do not press control+C because the app will fail.
+Note: If requested, pip install all the modules and libraries requested by gunicorn.
+Note: The messages displayed in the console are:
+    i)  [98] [INFO] Starting gunicorn 22.0.0
+    ii) [98] [INFO] Listening at: http://0.0.0.0:5002 (98)
+    iii) [98] [INFO] Using worker: sync
+    iv) [99] [INFO] Booting worker with pid: 99
+It means it is ok.
+10) Configure Your Web App:
+    i) Go to the "Web" tab on PythonAnywhere dashboard.
+    ii) Click on "Add a new web app". 
+    iii) Select Flask and Python 3.10 or newer.
+    iv) It automatically suggests the path:  /home/clfirme/mysite/flask_app.py
+    BUT changed it into: /home/clfirme/lped/app.py
+Note: Make sure to configure static files and database connections in your Flask app according to PythonAnywhere's file structure.
+Reload Your Web App in case you have css and/or javascript files.
+
+Click the "Reload" button on the PythonAnywhere web tab to apply the changes and open the webpage
+11) After opening the webpage, it appears the message: "Hello from Flask!" 
+    It is because the PythonAnywhere replaced app.py content. 
+12) Open the file app.py, delete the added content and paste the correct content for this file.
+13) 

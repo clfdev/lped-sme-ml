@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Group LPED and SME Prediction</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+        }
+        .section1 {
+            padding: 20px;
+            background-color: #e0e0e0;
+            width: 60%; /* Adjust width as needed */
+        }
+        .section2 {
+            width: 40%; /* Adjust width as needed */
+            padding: 20px;
+            text-align: center; /* Center the image */
+        }
+         /* Button styling */
+         .button {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            
+            /* Hover effect */
+            .button:hover {
+                background-color: #45a049;
+            }
+    </style>   
+    <body> 
+        <section class="section1">
+            <h1>Group LPED and SME Predictions</h1>
+            <ul>
+                <li>LPED stands for Local Potential Energy Density</li>
+                <li>SME stands for Supramolecular Energy</li>
+            </ul>
+            <h3><strong>Authors: </strong>Caio Lima Firme and Elvis Sidnei Böes</h3>
+            <p><strong>Note:</strong>One should provide a csv file as input whose column names must invariably be:</p>
+            <p>"Interatomic distance", "Atomic charge A", and "Atomic charge B" without quotation marks</p>
+            </br>
+            <p><strong>Important recommendation:</strong>in case there are negative and positive atomic charges, </br>
+                the input for the negative charge must be in "Atomic charge A".</p>
+            <form method="post" enctype="multipart/form-data">
+                <label for="file">Upload CSV file:</label>
+                <input type="file" id="file" name="file" accept=".csv" required>
+                <input type="submit" value="Upload and Predict" class="button"> 
+            </form>
+
+            {% if predictions is not none %}
+            <h2>Prediction Results</h2>
+            <table class="data">
+                <thead>
+                    <tr>
+                        <th>Interatomic distance</th>
+                        <th>Atomic charge A</th>
+                        <th>Atomic charge B</th>
+                        <th>Predicted LPED</th>
+                        <th>Predicted SME</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in predictions.itertuples(index=False) %}
+                    <tr>
+                        <td>{{ row.Interatomic_distance }}</td>
+                        <td>{{ row.Atomic_charge_A }}</td>
+                        <td>{{ row.Atomic_charge_B }}</td>
+                        <td>{{ row.Predicted_LPED }}</td>
+                        <td>{{ row.Predicted_SME }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+            <a href="{{ download_link }}" class="button">Download Predictions</a>
+            {% endif %}
+            <br/>
+            <br/>
+            <a href="{{ url_for('main_page') }}" class="button">Home</a> 
+            {% if uploaded_data %}
+            <h2>Uploaded Data:</h2>
+            {{ uploaded_data }}
+            {% endif %}
+
+        </section>
+        <section class="section2">
+            <img src="{{ url_for('static', filename='cover-app.jpg') }}" height="450" width="250" alt="Image">
+          </section>
+    </body>
+</html>

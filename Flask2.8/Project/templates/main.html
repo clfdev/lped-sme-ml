@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LPED and SME Predictions</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+        }
+        .section1 {          
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+
+        .section2 {          
+            padding: 20px;
+            background-color: white
+        }
+        /* Button styling */
+        .button {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            
+            /* Hover effect */
+            .button:hover {
+                background-color: #45a049;
+            }
+        /* Media query for mobile size (portrait direction) */
+        @media screen and (max-width: 600px) {
+            body {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+  <section class="section1">
+    <p>Welcome to</p>
+    <h1>LPED-SME Machine Learning Prediction</h1>
+    <h3><strong>Authors: </strong>Caio Lima Firme and Elvis Sidnei Böes</h3>
+    <p>Version 3. Date: 03/18/2025</p>
+    <p>In v.3, more samples representing pi interactions were added to the dataset</p>
+    <p>This app uses a machine learning model (Regularized Gradient Boosting) to obtain the local LPED and SME of a molecular complex.</p>
+    <p>LPED stands for Local potential energy density and it is obtained from QTAIM data.</p>
+    <p>SME stands for supramolecular energy and it is the total energy of interaction in a molecular complex.</p>
+    <p>A (molecular) complex is the union of two (or more) substances (molecules) held together by intermolecular interactions.</p>
+    <p>In case there is just one intermolecular interaction, the local SME becomes the global SME.</p>
+    <p>In order to obtain the global SME for a complex with multiple interactions:
+      <ol>
+        <li>Firstly obtain all local SME one by one</li>
+        <li>Finally sum them up</li>
+      </ol>
+    <p>Or one can use the Group prediction option (see below or at the right).</p>
+    </p>
+    <p>Beforehand, the user needs:</p>
+    <ol>
+      <li>A quantum chemistry package to generate the optimized geometry of the molecular complex.</li>
+      <li>Choose Merz-Singh-Kollman (MK), ChelpG or RESP scheme to obtain the corresponding atomic charges.</li>
+      <li>It is recommended to use a quantum method that takes into account the dispersion correction during the optimization process.</li>
+    </ol>
+    <p>For the prediction analysis, the user needs to:</p>
+    <ol>
+      <li>Inform the MK (or ChelpG or RESP) atomic charges of the two atoms involved in the interatomic interaction.</li>
+      <li>Inform the interatomic distance between the same interacting atoms whose atomic charges were given.</li>
+    </ol>
+    <p>The prediction depends upon the quality of theoretical level for the optimization geometry.</p>
+    <p>The prediction also depends on the quality of the atomic charge scheme used.</p>
+    <p><strong>Important:</strong>the dataset was designed to place the atomic negative charge in "Atomic charge A".
+    </br>One must remember this when inputing atomic charges if there are positive and negative charges involved.</p>
+    <p>The dataset for the machine learning modeling was obtained from our previous works on LPED plus new data.</p>
+    <p>Metrics: R2=0.861, MAE = 1.06 kcal mol-1 Bohr-3, MSE = 1.43 kcal2 mol-2 Bohr-6, and RMSE = 1.19 kcal mol-1 Bohr-3 </p>
+    <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4542842" target="_blank" class="button">Link for the paper</a>
+  </section>
+
+  <section class="section2">
+    <p><strong>Choose the type of prediction</strong></p>
+    <a href="/individual_predictions" class="button">Individual LPED-SME Predictions</a>
+    <br/><br/>
+    <a href="/group_predictions" class="button">Group LPED-SME Predictions</a>    
+    <br/><br/>   
+    <img src="./static/cover-app.jpg" height = "450" width = "250" padding="30">
+    <br/><br/>
+    <h4>To cite this work:</h4>
+    <p>Firme, CL, & Boes, ES (2024). </br>
+    LPED-SME Machine Learning Prediction (v.3.1). </br>
+    Zenodo. https://doi.org/10.5281/zenodo.12752491</p>
+  </section>
+</body>
+</html>

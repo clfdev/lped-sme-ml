@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LPED and SME Prediction</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: row;
+        }
+        .section1 {
+            padding: 20px;
+            background-color: #e0e0e0;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        form label {
+            margin: 10px 0 5px 0;
+        }
+        form input[type="text"] {
+            width: 30%; /* Adjust the width of the text input fields to 30% */
+            margin-bottom: 20px;
+        }
+        form input[type="submit"] {
+            width: 20%; /* Decrease the width of the submit button to 20% */
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        form input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        /* Media query for mobile size (portrait direction) */
+        @media screen and (max-width: 600px) {
+            body {
+                flex-direction: column;
+            }
+         }
+          /* Button styling */
+        .button {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #4CAF50;
+                color: white;
+                text-align: center;
+                text-decoration: none;
+                font-size: 16px;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+            
+            /* Hover effect */
+            .button:hover {
+                background-color: #45a049;
+            }
+    </style>
+</head>
+<body>
+  <section class="section1">
+    <h1>Individual LPED and SME Predictions</h1>
+    <ul>
+      <li>LPED stands for Local Potential Energy Density</li>
+      <li>SME stands for Supramolecular Energy</li>
+    </ul>
+    <h3><strong>Authors: </strong>Caio Lima Firme and Elvis Sidnei Böes</h3>
+    </br>
+    <p><strong>Important recommendation:</strong>in case there are negative and positive atomic charges, </br>
+    the input for the negative charge must be in "Atomic charge A".</p>
+    <form method="post">
+        <label for="interatomic_distance">Interatomic distance (Angstroms):</label>
+        <input type="text" id="interatomic_distance" name="interatomic_distance" required>
+        
+        <label for="atomic_charge_a">Atomic charge A (MK, RESP or ChelpG):</label>
+        <input type="text" id="atomic_charge_a" name="atomic_charge_a" required>
+        
+        <label for="atomic_charge_b">Atomic charge B (MK, RESP or ChelpG):</label>
+        <input type="text" id="atomic_charge_b" name="atomic_charge_b" required>
+        
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if lped is not none and sme is not none %}
+    <h2>Prediction Results</h2>
+    <p>Predicted LPED: {{ lped }} (kcal mol-1 Bohr-3)</p>
+    <p>Predicted SME: {{ sme }} (kcal mol-1)</p>
+    {% endif %}    
+    <br/>
+    <br/>
+    <a href="{{ url_for('main_page') }}" class="button">Home</a> 
+    
+  </section>
+  <section class="section2">
+    <img src="./static/cover-app.jpg" height = "450" width = "250" padding="30">
+  </section>
+</body>
+</html>

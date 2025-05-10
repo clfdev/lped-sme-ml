@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#ffffff"/>
+  
+  <!-- Plot area -->
+  <rect x="80" y="50" width="680" height="400" fill="#f8f8f8" stroke="#e0e0e0" stroke-width="1"/>
+  
+  <!-- Grid lines -->
+  <g stroke="#e0e0e0" stroke-width="1">
+    <!-- Vertical grid lines -->
+    <line x1="80" y1="50" x2="80" y2="450"/>
+    <line x1="216" y1="50" x2="216" y2="450"/>
+    <line x1="352" y1="50" x2="352" y2="450"/>
+    <line x1="488" y1="50" x2="488" y2="450"/>
+    <line x1="624" y1="50" x2="624" y2="450"/>
+    <line x1="760" y1="50" x2="760" y2="450"/>
+    
+    <!-- Horizontal grid lines -->
+    <line x1="80" y1="50" x2="760" y2="50"/>
+    <line x1="80" y1="130" x2="760" y2="130"/>
+    <line x1="80" y1="210" x2="760" y2="210"/>
+    <line x1="80" y1="290" x2="760" y2="290"/>
+    <line x1="80" y1="370" x2="760" y2="370"/>
+    <line x1="80" y1="450" x2="760" y2="450"/>
+  </g>
+  
+  <!-- Axes -->
+  <g stroke="#000000" stroke-width="2">
+    <line x1="80" y1="450" x2="760" y2="450"/> <!-- x-axis -->
+    <line x1="80" y1="50" x2="80" y2="450"/> <!-- y-axis -->
+  </g>
+  
+  <!-- Axes labels -->
+  <text x="420" y="490" text-anchor="middle" font-family="Arial" font-size="16">Training examples</text>
+  <text x="30" y="250" text-anchor="middle" font-family="Arial" font-size="16" transform="rotate(-90, 30, 250)">Mean Squared Error</text>
+  
+  <!-- Title -->
+  <text x="420" y="30" text-anchor="middle" font-family="Arial" font-size="20" font-weight="bold">Learning Curve (RandomForest, 53 samples)</text>
+  
+  <!-- X-axis ticks and labels -->
+  <g font-family="Arial" font-size="12" text-anchor="middle">
+    <text x="80" y="470">5</text>
+    <text x="216" y="470">15</text>
+    <text x="352" y="470">25</text>
+    <text x="488" y="470">35</text>
+    <text x="624" y="470">45</text>
+    <text x="760" y="470">53</text>
+    
+    <line x1="80" y1="450" x2="80" y2="455" stroke="#000000" stroke-width="1"/>
+    <line x1="216" y1="450" x2="216" y2="455" stroke="#000000" stroke-width="1"/>
+    <line x1="352" y1="450" x2="352" y2="455" stroke="#000000" stroke-width="1"/>
+    <line x1="488" y1="450" x2="488" y2="455" stroke="#000000" stroke-width="1"/>
+    <line x1="624" y1="450" x2="624" y2="455" stroke="#000000" stroke-width="1"/>
+    <line x1="760" y1="450" x2="760" y2="455" stroke="#000000" stroke-width="1"/>
+  </g>
+  
+  <!-- Y-axis ticks and labels -->
+  <g font-family="Arial" font-size="12" text-anchor="end">
+    <text x="75" y="454">0.00</text>
+    <text x="75" y="374">0.10</text>
+    <text x="75" y="294">0.20</text>
+    <text x="75" y="214">0.30</text>
+    <text x="75" y="134">0.40</text>
+    <text x="75" y="54">0.50</text>
+    
+    <line x1="80" y1="450" x2="75" y2="450" stroke="#000000" stroke-width="1"/>
+    <line x1="80" y1="370" x2="75" y2="370" stroke="#000000" stroke-width="1"/>
+    <line x1="80" y1="290" x2="75" y2="290" stroke="#000000" stroke-width="1"/>
+    <line x1="80" y1="210" x2="75" y2="210" stroke="#000000" stroke-width="1"/>
+    <line x1="80" y1="130" x2="75" y2="130" stroke="#000000" stroke-width="1"/>
+    <line x1="80" y1="50" x2="75" y2="50" stroke="#000000" stroke-width="1"/>
+  </g>
+  
+  <!-- Training score curve -->
+  <g>
+    <!-- Training score line -->
+    <path d="M80,230 C120,200 160,180 216,170 C250,162 300,158 352,150 C400,143 450,138 488,133 C520,130 570,127 624,125 C680,123 720,122 760,120" 
+          fill="none" stroke="#FF6B6B" stroke-width="3"/>
+    
+    <!-- Training score data points -->
+    <circle cx="80" cy="230" r="5" fill="#FF6B6B"/>
+    <circle cx="216" cy="170" r="5" fill="#FF6B6B"/>
+    <circle cx="352" cy="150" r="5" fill="#FF6B6B"/>
+    <circle cx="488" cy="133" r="5" fill="#FF6B6B"/>
+    <circle cx="624" cy="125" r="5" fill="#FF6B6B"/>
+    <circle cx="760" cy="120" r="5" fill="#FF6B6B"/>
+    
+    <!-- Training score error region -->
+    <path d="M80,210 C120,180 160,160 216,150 C250,142 300,138 352,130 C400,123 450,118 488,113 C520,110 570,107 624,105 C680,103 720,102 760,100 
+             L760,140 C720,142 680,143 624,145 C570,147 520,150 488,153 C450,158 400,163 352,170 C300,178 250,182 216,190 C160,200 120,220 80,250 Z" 
+          fill="#FF6B6B" fill-opacity="0.1"/>
+  </g>
+  
+  <!-- Test score curve -->
+  <g>
+    <!-- Test score line -->
+    <path d="M80,360 C120,330 160,310 216,290 C250,275 300,265 352,255 C400,248 450,243 488,238 C520,235 570,233 624,230 C680,228 720,227 760,225" 
+          fill="none" stroke="#4BC0C0" stroke-width="3"/>
+    
+    <!-- Test score data points -->
+    <circle cx="80" cy="360" r="5" fill="#4BC0C0"/>
+    <circle cx="216" cy="290" r="5" fill="#4BC0C0"/>
+    <circle cx="352" cy="255" r="5" fill="#4BC0C0"/>
+    <circle cx="488" cy="238" r="5" fill="#4BC0C0"/>
+    <circle cx="624" cy="230" r="5" fill="#4BC0C0"/>
+    <circle cx="760" cy="225" r="5" fill="#4BC0C0"/>
+    
+    <!-- Test score error region -->
+    <path d="M80,330 C120,300 160,280 216,260 C250,245 300,235 352,225 C400,218 450,213 488,208 C520,205 570,203 624,200 C680,198 720,197 760,195 
+             L760,255 C720,257 680,258 624,260 C570,263 520,265 488,268 C450,273 400,278 352,285 C300,295 250,305 216,320 C160,340 120,360 80,390 Z" 
+          fill="#4BC0C0" fill-opacity="0.1"/>
+  </g>
+  
+  <!-- Legend -->
+  <rect x="600" y="80" width="20" height="10" fill="#FF6B6B"/>
+  <text x="630" y="90" font-family="Arial" font-size="14" text-anchor="start">Training score</text>
+  
+  <rect x="600" y="100" width="20" height="10" fill="#4BC0C0"/>
+  <text x="630" y="110" font-family="Arial" font-size="14" text-anchor="start">Cross-validation score</text>
+  
+  <!-- Annotations -->
+  <g font-family="Arial" font-size="12">
+    <!-- Convergence arrow and text -->
+    <path d="M700,220 L680,180" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrow)"/>
+    <text x="700" y="230" text-anchor="middle">Converging performance</text>
+    
+    <!-- Gap arrow and text -->
+    <line x1="780" y1="120" x2="780" y2="225" stroke="#333" stroke-width="1.5" stroke-dasharray="5,3"/>
+    <text x="800" y="170" text-anchor="start" transform="rotate(-90, 800, 170)">Performance gap</text>
+  </g>
+  
+  <!-- Arrow marker definition -->
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#333"/>
+    </marker>
+  </defs>
+</svg>

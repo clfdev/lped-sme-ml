@@ -1,0 +1,11 @@
+Complex;Interatomic distance;Atomic charge A;Atomic charge B
+N-H (propanenitrile-water);2.063;-0.44;0.382
+O-H (methylammonium-water);1.688;-1.039;0.412
+O(a)-H (methyl acetate-water);2.07;-0.136;0.262
+O(b)-H (methyl acetate-water);1.92;-0.55;0.331
+O(b)-H (methyl acetate-dimer) (avg);2.543;-0.584;0.132
+C(b)-C(b) (methyl acetate-dimer);3.172;0.82;0.83
+O(a)-O(a) (methyl acetate-dimer);3.043;-0.377;-0.382
+O-H (diethyl ether - water);1.866;-0.422;0.404
+O-H (2-pentanone-water);1.922;-0.564;0.367
+O-HC (2-pentanone-water);2.642;-0.87;0.013
