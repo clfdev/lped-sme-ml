@@ -27,8 +27,9 @@ print(corr_lj)
 
 # Create the heatmap
 plt.figure(figsize=(10, 8))
-sns.heatmap(corr_lj, annot=True, cmap='coolwarm', fmt='.2f', linewidths=.5)
-plt.title('Correlation Matrix: Lennard-Jones Model', fontsize=14)
+ax=sns.heatmap(corr_lj, annot=True, cmap='coolwarm', fmt='.2f', linewidths=.5)
+plt.title('Matriz de correlação: Modelo Lennard-Jones', fontsize=14)
+ax.set_yticklabels(ax.get_yticklabels(), rotation=0, verticalalignment='center')
 plt.tight_layout()
 
 # Save the heatmap
